@@ -15,11 +15,6 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
             integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="/js/tinymce/tinymce.min.js"></script>
-    <script>
-        tinymce.init({
-            selector: '#mytextarea',
-        });
-    </script>
 </head>
 <body>
 <nav class="navbar navbar-expand-sm bg-dark">
@@ -27,87 +22,17 @@
 </nav>
 <div class="container">
     <div class="row">
-
         <h2 class="title">Project</h2>
-
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <label class="d-inline-block" for="customer_id">Customer ID</label>
-                    <select name="customer_id" class="form-control">
-                        <option>Default select</option>
-                        <option>Action</option>
-                        <option>Another action</option>
-                    </select>
-                </div>
-                <div class="col">
-                    <label class="d-inline-block" for="order_by">Order BY</label>
-                    <input type="text" class="form-control" id="order_by">
-                </div>
-
-                <div class="w-100"></div>
-
-                <div class="col">
-                    <label class="d-inline-block" for="job_id">Job ID</label>
-                    <select name="job_id" class="form-control">
-                        <option>job_id</option>
-                        <option>Action</option>
-                        <option>Another action</option>
-                    </select>
-                </div>
-                <div class="col">
-                    <label class="d-inline-block" for="dateInput">Date</label>
-                    <input type="date" class="form-control" id="dateInput">
-                </div>
-
-                <div class="w-100"></div>
-
-                <div class="col">
-                    <label class="d-inline-block" for="status_id">Status ID</label>
-                    <select name="job_id" class="form-control">
-                        <option>job_id</option>
-                        <option>Action</option>
-                        <option>Another action</option>
-                    </select>
-                </div>
-                <div class="col">
-                    <label for="areaInput">Area/Field</label>
-                    <input type="text" class="form-control" id="areaInput">
-                </div>
-
-                <div class="w-100"></div>
-
-                <div class="col">
-                    <!--                //Location ID-->
-                    <label class="d-inline-block" for="location_id">Location ID</label>
-                    <select name="job_id" class="form-control">
-                        <option>job_id</option>
-                        <option>Action</option>
-                        <option>Another action</option>
-                    </select>
-                </div>
-                <div class="col"></div>
-
-            </div>
-        </div>
-
+        <?php include __DIR__ . "/../../views/forms/generalForm.php"; ?>
     </div>
 
+    <?php include __DIR__ . "/../../views/forms/textarea.php"; ?>
 
-    <hr class="hr"/>
-    <h6>Description of Work</h6>
-    <textarea id="mytextarea">Hello, World!</textarea>
+    <?php include __DIR__ . "/../../views/forms/labourForm.php"; ?>
 
+    <?php include __DIR__ . "/../../views/forms/truckForm.php"; ?>
 
-    <hr class="hr"/>
-    <h4>Labour</h4>
-    <hr class="hr"/>
-    <h4>Truck</h4>
-    <hr class="hr"/>
-    <h4>Miscellaneous</h4>
-
-
-
+    <?php include __DIR__ . "/../../views/forms/miscellaneousForm.php"; ?>
 
 </div>
 
