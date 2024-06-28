@@ -22,7 +22,17 @@ class Ticket
 
     public function updateTicket($data)
     {
-        // Implement update logic here based on the fields in the database.
+        try {
+            $stmt = $this->db->prepare("UPDATE customers SET name = :name, email = :email WHERE id = :id");
+            $stmt->bindParam(':name', $newData['name']);
+            $stmt->bindParam(':email', $newData['email']);
+            $stmt->bindParam(':id', $customerId);
+            $stmt->execute();
+            return true; // Success
+        } catch(\PDOException $e) {
+            // Handle database errors here (log, throw exception, etc.)
+            return false;
+        }
     }
 }
 
