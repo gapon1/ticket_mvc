@@ -42,6 +42,9 @@ class TicketController
         $staffs = $this->formModel->getAllStaff();
         $positions = $this->formModel->getAllPositions();
         $positions = $this->formModel->getAllPositions();
+        $ticketTrucks = $this->formModel->getAllTicketTruck($id);
+        $trucks = $this->formModel->getAllTruck();
+        $miscellaneous = $this->formModel->getAllMiscellaneous($id);
 
         include __DIR__ . '/../views/ticket/edit.php';
     }
