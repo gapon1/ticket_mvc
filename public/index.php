@@ -9,8 +9,15 @@ $id = isset($_GET['id']) ? $_GET['id'] : 1; // Default to 1 for testing
 
 $controller = new TicketController();
 
-if ($action === 'edit') {
-    $controller->edit($id);
-} elseif ($action === 'update') {
-    $controller->update($_POST);
+
+switch ($action) {
+    case 'edit':
+        $controller->edit($id);
+        break;
+    case 'update':
+        $controller->update($_POST);
+        break;
+    case 'save':
+        $controller->save($_POST);
+        break;
 }

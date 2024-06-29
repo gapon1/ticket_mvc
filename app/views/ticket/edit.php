@@ -27,8 +27,6 @@
         <?php include __DIR__ . "/../../views/forms/generalForm.php"; ?>
     </div>
 
-    <?php include __DIR__ . "/../../views/forms/textarea.php"; ?>
-
     <?php include __DIR__ . "/../../views/forms/labourForm.php"; ?>
 
     <?php include __DIR__ . "/../../views/forms/truckForm.php"; ?>

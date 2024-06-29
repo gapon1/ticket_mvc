@@ -1,6 +1,6 @@
 <?php
 
-namespace app\controllers;
+namespace App\controllers;
 
 use App\Models\Customer;
 use app\models\Database;
@@ -49,12 +49,14 @@ class TicketController
         include __DIR__ . '/../views/ticket/edit.php';
     }
 
-    public function update()
+    public function update($data)
     {
-        var_dump('dddd');
-        die();
         $this->ticketModel->updateTicket($data);
-        // Redirect or render a view after update
+    }
+
+    public function save($post)
+    {
+        // Redirect or render a view after save
     }
 
     public static function getStatusOptions()

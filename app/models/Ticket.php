@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace App\models;
 
 use app\models\Database;
 
@@ -20,18 +20,24 @@ class Ticket
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 
-    public function updateTicket($data)
+    public function updateTicket($newData)
     {
-        try {
-            $stmt = $this->db->prepare("UPDATE customers SET name = :name, email = :email WHERE id = :id");
-            $stmt->bindParam(':name', $newData['name']);
-            $stmt->bindParam(':email', $newData['email']);
-            $stmt->bindParam(':id', $customerId);
-            $stmt->execute();
-            return true; // Success
-        } catch(\PDOException $e) {
-            // Handle database errors here (log, throw exception, etc.)
-            return false;
+        $sql = "UPDATE tickets SET 
+                     customer_id = :customer_id,
+                     ordered_by = :ordered_by,
+                     job_id = :job_id,
+                     date = :date,
+                     status = :status_id,
+                     area_field = :area_field,
+                     location_id = :location_id, 
+                     description = :description 
+               WHERE id=:id";
+        $stmt = $this->db->prepare($sql);
+
+        if ($stmt->execute($newData)) {
+            echo "Record updated successfully";
+        } else {
+            echo "Error updating record";
         }
     }
 }

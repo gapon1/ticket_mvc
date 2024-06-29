@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "458dc3450ab786210bb1f49a96a38b66",
+    "content-hash": "f8a4d2ee52fe93ebfa5c0c2a1d119b6f",
     "packages": [
         {
             "name": "tinymce/tinymce",
@@ -73,7 +73,8 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.6"
+        "php": ">=5.6",
+        "ext-pdo": "*"
     },
     "platform-dev": [],
     "platform-overrides": {
