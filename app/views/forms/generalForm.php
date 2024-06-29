@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col">
                 <label class="d-inline-block" for="customer_id">Customer ID</label>
-                <select name="customer_id" class="form-control">
+                <select id="customer-dropdown" name="customer_id" class="form-control">
                     <?php foreach ($customers as $customer): ?>
                         <option <?php if ($ticket['customer_id'] == $customer->id) {
                             echo 'selected';
@@ -30,7 +30,7 @@
 
             <div class="col">
                 <label class="d-inline-block" for="job_id">Job ID</label>
-                <select name="job_id" class="form-control">
+                <select disabled id="job-dropdown" name="job_id" class="form-control">
                     <?php foreach ($jobs as $job): ?>
                         <option <?php if ($ticket['job_id'] == $job->id) {
                             echo 'selected';
@@ -65,7 +65,7 @@
 
             <div class="col">
                 <label class="d-inline-block" for="location_id">Location ID</label>
-                <select name="location_id" class="form-control">
+                <select id="location-dropdown" disabled name="location_id" class="form-control">
                     <?php foreach ($locations as $location): ?>
                         <option <?php if ($ticket['location_id'] == $location->id) {
                             echo 'selected';

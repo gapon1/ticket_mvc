@@ -19,4 +19,9 @@ class Location {
         $stmt = $this->db->query("SELECT * FROM $this->table");
         return $stmt->fetchAll(PDO::FETCH_CLASS);
     }
+
+    public function getLocationByJobId($job_id) {
+        $stmt = $this->db->query("SELECT id, location_lsd FROM $this->table WHERE job_id = $job_id");
+        return $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
+    }
 }

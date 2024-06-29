@@ -20,4 +20,10 @@ switch ($action) {
     case 'save':
         $controller->save($_POST);
         break;
+    case 'jobDropdown':
+        $controller->jobDropdown($_GET['customer_id']);
+        break;
+    case 'locationDropdown':
+        $controller->locationDropdown($_GET['job_id']);
+        break;
 }

@@ -7,7 +7,8 @@ use app\models\Database;
 use App\Models\FormModel;
 use App\Models\Job;
 use App\Models\Location;
-use app\models\Ticket;
+use App\models\Ticket;
+use function MongoDB\BSON\toJSON;
 
 class TicketController
 {
@@ -57,6 +58,22 @@ class TicketController
     public function save($post)
     {
         // Redirect or render a view after save
+    }
+
+    public function jobDropdown($customer_id)
+    {
+        $jobs = $this->jobsModel->getJobsByCustomerId($customer_id);
+        if (!empty($jobs)) {
+            echo json_encode($jobs);
+        }
+    }
+
+    public function locationDropdown($job_id)
+    {
+        $location = $this->locationsModel->getLocationByJobId($job_id);
+        if (!empty($location)) {
+            echo json_encode($location);
+        }
     }
 
     public static function getStatusOptions()
