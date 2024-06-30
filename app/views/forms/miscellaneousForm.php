@@ -7,24 +7,25 @@
             <div class="form-row sub-form">
                 <div class="form-group col-md-2">
                     <label>Description</label>
-                    <input class="reg-rate-labour form-control" value="<?= $mod->description ?>">
+                    <input class="form-control" value="<?= $mod->description ?>" required>
                 </div>
                 <div class="form-group col-md-2">
                     <label>Cost</label>
-                    <input type="number" class="reg-rate-labour form-control" value="<?= $mod->cost ?>">
+                    <input type="number" class="form-control" value="<?= $mod->cost ?>" required>
                 </div>
                 <div class="form-group col-md-2">
                     <label>Price</label>
-                    <input type="number" class="miscellaneous-price form-control" value="<?= $mod->price ?>">
+                    <input type="number" class="miscellaneous-price form-control" value="<?= $mod->price ?>" required>
                 </div>
                 <div class="form-group col-md-2">
                     <label>Quantity</label>
-                    <input type="number" class="miscellaneous-quantity form-control" value="<?= $mod->quantity ?>">
+                    <input type="number" class="miscellaneous-quantity form-control" value="<?= $mod->quantity ?>" required>
                 </div>
                 <div class="form-group col-md-2">
                     <label>Total</label>
                     <input class="miscellaneous-total form-control" disabled value="<?= $mod->total ?>">
                 </div>
+                <input id="misc_ticket_id" type="hidden" value="<?= $mod->ticket_id ?>">
                 <div class="form-group col-md-2 text-center" style="margin-top: 45px">
                     <button type="button" id="<?= $mod->id ?>" class="btn btn-danger remove-sub-form">X</button>
                     <button type="button" class="btn btn-primary add-sub-form">+</button>

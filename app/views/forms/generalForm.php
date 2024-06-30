@@ -23,7 +23,7 @@
             <div class="col">
                 <label class="d-inline-block" for="ordered_by">Order BY</label>
                 <input name="ordered_by" value="<?= $ticket['ordered_by'] ?>" type="text" class="form-control"
-                       id="order_by">
+                       id="order_by" required>
             </div>
 
             <div class="w-100"></div>
@@ -40,7 +40,7 @@
             </div>
             <div class="col">
                 <label class="d-inline-block" for="dateInput">Date</label>
-                <input name="date" value="<?= $ticket['date'] ?>" type="date" class="form-control" id="dateInput">
+                <input name="date" value="<?= $ticket['date'] ?>" type="date" class="form-control" id="dateInput" required>
             </div>
 
             <div class="w-100"></div>
@@ -58,7 +58,7 @@
             <div class="col">
                 <label for="areaInput">Area/Field</label>
                 <input name="area_field" value="<?= $ticket['area_field'] ?>" type="text" class="form-control"
-                       id="areaInput">
+                       id="areaInput" required>
             </div>
 
             <div class="w-100"></div>

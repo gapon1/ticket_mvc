@@ -17,6 +17,7 @@
             integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="/js/tinymce/tinymce.min.js"></script>
     <script src="/js/ticket.js"></script>
+    <script src="/js/miscellaneous.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-sm bg-dark">

@@ -8,7 +8,6 @@ use App\Models\FormModel;
 use App\Models\Job;
 use App\Models\Location;
 use App\models\Ticket;
-use function MongoDB\BSON\toJSON;
 
 class TicketController
 {
@@ -45,7 +44,7 @@ class TicketController
         $positions = $this->formModel->getAllPositions();
         $ticketTrucks = $this->formModel->getAllTicketTruck($id);
         $trucks = $this->formModel->getAllTruck();
-        $miscellaneous = $this->formModel->getAllMiscellaneous($id);
+        $miscellaneous = $this->formModel->getAllMiscellaneous();
 
         include __DIR__ . '/../views/ticket/edit.php';
     }
