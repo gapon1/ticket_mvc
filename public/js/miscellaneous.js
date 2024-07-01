@@ -54,16 +54,47 @@ $(document).ready(function () {
     // Create new entity
     $(document).on('click', '#save_dynamic', function (e) {
         e.preventDefault();
+        $(".form-group").removeClass("has-error");
+        $(".help-block").remove();
         $.ajax({
             url: '/createMiscellaneous?ticketId=' + ticketId,
             type: 'POST',
-            dataType: 'html',
+            dataType: "html",
             data: $('#ticket-form-dynamic-sub').serialize(),
             success: function (data) {
-                $('#sub-forms-container_main').remove();
-                $('#misc_container').replaceWith(data); // Replace the content
-                $('.add-sub-form').prop('disabled', false);
-                updateSubTotal();
+                try {
+                    // Try to parse the variable as JSON
+                    let jsonObject = JSON.parse(data);
+                    if (jsonObject.errors.description) {
+                        $("#description-group").addClass("has-error");
+                        $("#description-group").append(
+                            '<div class="help-block">' + jsonObject.errors.description + "</div>"
+                        );
+                    }
+                    if (jsonObject.errors.cost) {
+                        $("#cost-group").addClass("has-error");
+                        $("#cost-group").append(
+                            '<div class="help-block">' + jsonObject.errors.cost + "</div>"
+                        );
+                    }
+                    if (jsonObject.errors.price) {
+                        $("#price-group").addClass("has-error");
+                        $("#price-group").append(
+                            '<div class="help-block">' + jsonObject.errors.price + "</div>"
+                        );
+                    }
+                    if (jsonObject.errors.quantity) {
+                        $("#quantity-group").addClass("has-error");
+                        $("#quantity-group").append(
+                            '<div class="help-block">' + jsonObject.errors.quantity + "</div>"
+                        );
+                    }
+                } catch (e) {
+                    $('#sub-forms-container_main').remove();
+                    $('#misc_container').replaceWith(data); // Replace the content
+                    $('.add-sub-form').prop('disabled', false);
+                    updateSubTotal();
+                }
             }
         });
     });

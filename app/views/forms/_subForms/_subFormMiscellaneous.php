@@ -1,22 +1,22 @@
 <form method="post" id="ticket-form-dynamic-sub">
     <div class="sub-form">
         <div class="form-row">
-            <input name="ticket_id" id="misc_ticket_id" type="hidden" value="<?= $ticketId ?>">
-            <div class="form-group col-md-2">
+            <input name="ticket_id" id="misc_ticket_id" type="hidden" value="<?= $id ?>">
+            <div id="description-group" class="form-group col-md-2">
                 <label>Description</label>
                 <input name="description" class="form-control" required>
             </div>
-            <div class="form-group col-md-2">
+            <div id="cost-group" class="form-group col-md-2">
                 <label>Cost</label>
                 <input name="cost" type="number" class="form-control" required>
             </div>
-            <div class="form-group col-md-2">
+            <div id="price-group" class="form-group col-md-2">
                 <label>Price</label>
                 <input name="price" type="number" class="miscellaneous-price form-control" required>
             </div>
-            <div class="form-group col-md-2">
+            <div id="quantity-group" class="form-group col-md-2">
                 <label>Quantity</label>
-                <input  name="quantity" type="number" class="miscellaneous-quantity form-control" required>
+                <input name="quantity" type="number" class="miscellaneous-quantity form-control" required>
             </div>
             <div class="form-group col-md-2">
                 <label>Total</label>

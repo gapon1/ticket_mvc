@@ -32,9 +32,12 @@ switch ($action) {
         $miscellaneous->miscellaneousAddBlock($_GET['index'], $_GET['counter'], $_GET['ticketId'] );
         break;
     case 'createMiscellaneous':
-        $miscellaneous->createMiscellaneous($_POST);
+        $miscellaneous->createMiscellaneous($_POST, $id);
         break;
     case 'deleteMiscellaneous':
         $miscellaneous->deleteMiscellaneous($_GET['id']);
+        break;
+    case 'updateMiscellaneous':
+        $miscellaneous->updateMiscellaneous($_POST, $_GET['ticketId']);
         break;
 }

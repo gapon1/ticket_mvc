@@ -1,12 +1,3 @@
-<?php
-/**
- * @var $ticket
- * @var $customers
- * @var $jobs
- * @var $statuses
- * @var $locations
- */
-?>
 <form action="/update" method="POST">
     <div class="container">
         <div class="row">
@@ -30,7 +21,7 @@
 
             <div class="col">
                 <label class="d-inline-block" for="job_id">Job ID</label>
-                <select disabled id="job-dropdown" name="job_id" class="form-control">
+                <select id="job-dropdown" name="job_id" class="form-control">
                     <?php foreach ($jobs as $job): ?>
                         <option <?php if ($ticket['job_id'] == $job->id) {
                             echo 'selected';
@@ -65,7 +56,7 @@
 
             <div class="col">
                 <label class="d-inline-block" for="location_id">Location ID</label>
-                <select id="location-dropdown" disabled name="location_id" class="form-control">
+                <select id="location-dropdown" name="location_id" class="form-control">
                     <?php foreach ($locations as $location): ?>
                         <option <?php if ($ticket['location_id'] == $location->id) {
                             echo 'selected';
@@ -74,7 +65,6 @@
                 </select>
             </div>
             <div class="col">
-                <input name="id" value="<?= $id ?>" type="hidden">
             </div>
             <hr class="hr"/>
             <div class="col-md-12">

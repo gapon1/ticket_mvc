@@ -2,6 +2,7 @@
 <div id="misc_container" style="text-align: left">
     <h4>Miscellaneous</h4>
     <div id="sub-forms-container"></div>
+    <input id="misc_ticket_id" type="hidden" value="<?= $id ?>">
     <?php if (!empty($miscellaneous)): ?>
         <?php foreach ($miscellaneous as $index => $mod): ?>
             <div class="form-row sub-form">
@@ -25,7 +26,6 @@
                     <label>Total</label>
                     <input class="miscellaneous-total form-control" disabled value="<?= $mod->total ?>">
                 </div>
-                <input id="misc_ticket_id" type="hidden" value="<?= $mod->ticket_id ?>">
                 <div class="form-group col-md-2 text-center" style="margin-top: 45px">
                     <button type="button" id="<?= $mod->id ?>" class="btn btn-danger remove-sub-form">X</button>
                     <button type="button" class="btn btn-primary add-sub-form">+</button>

@@ -19,71 +19,63 @@ class MiscellaneousController
         $this->formModel = new FormModel($this->db);
     }
 
-    public function miscellaneousAddBlock($index, $counter, $ticketId)
+    public function miscellaneousAddBlock($index, $counter, $id)
     {
         include __DIR__ . '/../views/forms/_subForms/_subFormMiscellaneous.php';
     }
 
-    public function createMiscellaneous($post)
+    public function createMiscellaneousValidator($post)
     {
-        if ($post) {
+        if (empty($post['description'])) {
+            $errors['description'] = 'Description is required.';
+        }
+        if (empty($post['cost'])) {
+            $errors['cost'] = 'Cost is required.';
+        }
+        if (empty($post['price'])) {
+            $errors['price'] = 'Price is required.';
+        }
+        if (empty($post['quantity'])) {
+            $errors['quantity'] = 'Quantity is required.';
+        }
+        if (!empty($errors)) {
+            $data['success'] = false;
+            $data['errors'] = $errors;
+        } else {
+            $data['success'] = true;
+            $data['message'] = 'Success!';
+        }
+        return $data;
+    }
+
+    public function createMiscellaneous($post, $id)
+    {
+        $validator = $this->createMiscellaneousValidator($post);
+
+        if ($validator['success']) {
             if ($this->miscellaneousModel->save($post)) {
                 $miscellaneous = $this->formModel->getAllMiscellaneous();
                 return include __DIR__ . "/../views/forms/miscellaneousForm.php";
+            } else {
+                return 'Create ERROR';
             }
         } else {
-            return 'Create ERROR';
+            echo json_encode($validator);
         }
-        return 'Create success';
 
     }
 
-//    public function actionCreateMiscellaneous($ticketId)
-//    {
-//        $model = new Miscellaneous();
-//        if ($this->request->isPost) {
-//            if ($model->load($this->request->post()) && $model->save()) {
-//
-//                return $this->renderAjax('../../widgets/views/miscellaneous', [
-//                    'model' => Miscellaneous::find()->all(),
-//                    'ticketId' => $ticketId
-//                ]);
-//            }
-//        } else {
-//            $model->loadDefaultValues();
-//        }
-//        return 'Create success';
-//    }
-//
-//    public function actionUpdateMiscellaneous($ticketId)
-//    {
-//        // Load the related Miscellaneous models
-//        $miscellaneousModels = Miscellaneous::findAll(['ticket_id' => $ticketId]);
-//
-//        if (Yii::$app->request->isPost) {
-//            $miscellaneousPostData = Yii::$app->request->post('Miscellaneous', []);
-//            foreach ($miscellaneousModels as $index => $miscModel) {
-//                // Load the submitted data and validate it
-//                if (isset($miscellaneousPostData[$index])) {
-//                    $miscModel->load($miscellaneousPostData[$index], '');
-//                }
-//            }
-//            $valid = ActiveForm::validateMultiple($miscellaneousModels);
-//            if (empty($valid)) {
-//                // All models are valid, so save them
-//                foreach ($miscellaneousModels as $miscModel) {
-//                    $miscModel->save(false); // Saving without further validation
-//                }
-//                // Redirect or do something after saving
-//            } else {
-//                // Validation failed
-//                Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-//                return $valid;
-//            }
-//        }
-//        return 'Miscellaneous Updated Success!';
-//    }
-//
+    public function updateMiscellaneous($post, $ticketId)
+    {
+        $validator = $this->createMiscellaneousValidator($post);
+
+        if ($validator['success']) {
+            $this->miscellaneousModel->update($ticketId);
+        }
+
+        return 'Miscellaneous Updated Success!';
+    }
+
     public function deleteMiscellaneous($id)
     {
         $this->miscellaneousModel->delete($id);

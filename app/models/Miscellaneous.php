@@ -23,6 +23,14 @@ class Miscellaneous
         }
     }
 
+    public function update($ticketId)
+    {
+        var_dump('update');
+        var_dump($ticketId);
+        die();
+
+    }
+
     public function delete($id)
     {
         if ($id != 'empty'){
