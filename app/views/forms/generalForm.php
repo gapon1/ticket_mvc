@@ -1,7 +1,8 @@
-<form action="/update" method="POST">
+<form id="general_form" method="POST">
     <div class="container">
         <div class="row">
             <div class="col">
+                <input name="id" value="<?= $ticket['id'] ?>" type="hidden">
                 <label class="d-inline-block" for="customer_id">Customer ID</label>
                 <select id="customer-dropdown" name="customer_id" class="form-control">
                     <?php foreach ($customers as $customer): ?>
@@ -13,7 +14,7 @@
             </div>
             <div class="col">
                 <label class="d-inline-block" for="ordered_by">Order BY</label>
-                <input name="ordered_by" value="<?= $ticket['ordered_by'] ?>" type="text" class="form-control"
+                <input name="ordered_by" value="<?= $ticket['ordered_by'] ?>" type="number" class="form-control"
                        id="order_by" required>
             </div>
 
@@ -21,7 +22,7 @@
 
             <div class="col">
                 <label class="d-inline-block" for="job_id">Job ID</label>
-                <select id="job-dropdown" name="job_id" class="form-control">
+                <select id="job-dropdown" name="job_id" class="form-control no_active">
                     <?php foreach ($jobs as $job): ?>
                         <option <?php if ($ticket['job_id'] == $job->id) {
                             echo 'selected';
@@ -56,7 +57,7 @@
 
             <div class="col">
                 <label class="d-inline-block" for="location_id">Location ID</label>
-                <select id="location-dropdown" name="location_id" class="form-control">
+                <select id="location-dropdown" name="location_id" class="form-control no_active">
                     <?php foreach ($locations as $location): ?>
                         <option <?php if ($ticket['location_id'] == $location->id) {
                             echo 'selected';

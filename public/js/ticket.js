@@ -9,7 +9,7 @@ $(document).ready(function () {
             dataType: 'html',
             data: {customer_id: customerId},
             success: function (data) {
-                $('#job-dropdown').prop('disabled', false).empty().append($('<option>').text('Select Job'));
+                $('#job-dropdown').removeClass("no_active").empty().append($('<option>').text('Select Job'));
                 var parsedData = typeof data === 'object' ? data : JSON.parse(data); // Safety check
                 $.each(parsedData, function (index, value) {
                     $('#job-dropdown').append($('<option>').attr('value', index).text(value));
@@ -27,7 +27,7 @@ $(document).ready(function () {
             dataType: 'html',
             data: {job_id: jobId},
             success: function (data) {
-                $('#location-dropdown').prop('disabled', false).empty().append($('<option>').text('Select Location/LSD'));
+                $('#location-dropdown').removeClass("no_active").empty().append($('<option>').text('Select Location/LSD'));
                 var parsedData = typeof data === 'object' ? data : JSON.parse(data); // Safety check
                 $.each(parsedData, function (index, value) {
                     $('#location-dropdown').append($('<option>').attr('value', index).text(value));
@@ -36,4 +36,18 @@ $(document).ready(function () {
         });
     });
 //==========END:: Ajax script for Ticket Form  ===========
+    //Update general form
+    $('#general_form').on('submit', function (e) {
+        e.preventDefault();
+        $.ajax({
+            url: '/update',
+            type: 'POST',
+            dataType: "html",
+            data: $(this).serialize(),
+            success: function (data) {
+                console.log(data);
+            }
+        });
+    })
+
 });

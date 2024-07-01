@@ -23,11 +23,23 @@ class Miscellaneous
         }
     }
 
-    public function update($ticketId)
+    public function update($ticketId, $newData)
     {
-        var_dump('update');
-        var_dump($ticketId);
-        die();
+        $sql = "UPDATE $this->table SET 
+                     description = :description,
+                     cost = :cost,
+                     price = :price,
+                     quantity = :quantity,
+                     ticket_id = :ticket_id,
+                     total = :total
+               WHERE id=:id";
+        $stmt = $this->db->prepare($sql);
+
+        if ($stmt->execute($newData)) {
+            echo "Record updated successfully";
+        } else {
+            echo "Error updating record";
+        }
 
     }
 

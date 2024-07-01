@@ -100,17 +100,18 @@ $(document).ready(function () {
     });
 
     // Add trigger click for main EDIT button
-    $(document).on('click', '#save-dynamic-form', function (e) {
+    $('#save-dynamic-form').on('click', function (e) {
         $('#save-dynamic-form-misc').trigger('click');
     });
 
     //Update new entity
-    $(document).on('click', '#save-dynamic-form-misc', function (e) {
+    $("#save-dynamic-form-misc").on('click', function (e) {
         e.preventDefault();
         $.ajax({
-            url: '/miscellaneous/update-miscellaneous?ticketId=' + ticketId,
+            url: '/updateMiscellaneous?ticketId=' + ticketId,
             type: 'POST',
-            data: $('#ticket-form-dynamic').serialize(),
+            dataType: "html",
+            data: $("#ticket-form-dynamic").serialize(),
             success: function (data) {
                 // $('#exampleModal .modal-body').html(data);
                 // $('#exampleModal').modal('show');

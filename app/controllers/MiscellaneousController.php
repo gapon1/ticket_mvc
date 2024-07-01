@@ -70,7 +70,7 @@ class MiscellaneousController
         $validator = $this->createMiscellaneousValidator($post);
 
         if ($validator['success']) {
-            $this->miscellaneousModel->update($ticketId);
+            $this->miscellaneousModel->update($ticketId, $post);
         }
 
         return 'Miscellaneous Updated Success!';
