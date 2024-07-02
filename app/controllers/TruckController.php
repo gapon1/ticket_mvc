@@ -35,7 +35,8 @@ class TruckController
         $validator = $this->truckValidator($post);
 
         if ($validator['success']) {
-            if ($this->truckModel->save($post)) {
+            if ($this->truckModel->save($post, $id)) {
+                $ticketTrucks = $this->formModel->getAllTicketTruck($id);
                 $trucks = $this->formModel->getAllTruck();
                 $uoms = $this->formModel->getUomOptions();
                 return include __DIR__ . "/../views/forms/truckForm.php";
@@ -72,6 +73,9 @@ class TruckController
     {
         if (empty($post['quantity'])) {
             $errors['quantity'] = 'Quantity is required.';
+        }
+        if (empty($post['label'])) {
+            $errors['label'] = 'Label is required.';
         }
 
         if (!empty($errors)) {

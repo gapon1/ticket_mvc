@@ -1,10 +1,10 @@
 <hr class="hr"/>
 <div id="misc_container-truck">
-    <h4>Truck</h4>
+    <h5>Truck</h5>
     <form id="ticket-form-dynamic-truck" method="post">
         <div id="sub-forms-container_main-truck"></div>
-        <?php if (!empty($trucks)): ?>
-            <?php foreach ($trucks as $index => $mod): ?>
+        <?php if (!empty($ticketTrucks)): ?>
+            <?php foreach ($ticketTrucks as $index => $mod): ?>
                 <input name="items_truck[<?= $index; ?>][id]" type="hidden" value="<?= $mod->id ?>">
                 <div class="form-row sub-form-truck">
                     <div class="form-group col-md-2">
@@ -13,7 +13,7 @@
                             <?php foreach ($trucks as $truck): ?>
                                 <option <?php if ($truck->id == $mod->id) {
                                     echo 'selected';
-                                } ?> value="<?= $truck->id ?>"><?= $truck->label ?></option>
+                                } ?> value="<?=  $truck->label ?>"><?= $truck->label ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>

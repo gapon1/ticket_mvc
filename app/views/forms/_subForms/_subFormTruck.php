@@ -3,15 +3,13 @@
         <div class="form-row">
             <div class="form-group col-md-2">
                 <label>Label</label>
-                <select name="label" class="uom-truck form-control">
-                    <?php foreach ($trucks as $truck): ?>
-                        <option value="<?= $truck->id ?>"><?= $truck->label ?></option>
-                    <?php endforeach; ?>
-                </select>
+                <input name="label" type="text" class="form-control">
+                <div id="label-group"></div>
             </div>
-            <div id="quantity-group" class="form-group col-md-2">
+            <div class="form-group col-md-2">
                 <label>Quantity</label>
                 <input name="quantity" type="number" class="quantity-truck form-control">
+                <div id="quantity-group"></div>
             </div>
             <div class="form-group col-md-2">
                 <label>Uom</label>
@@ -29,7 +27,7 @@
                 <label>Total</label>
                 <input name="total" class="total-truck form-control no_active">
             </div>
-            <div class="form-group col-md-2" style="margin-top: 45px">
+            <div class="form-group col-md-2" style="margin-top: 45px; text-align: center">
                 <button id="empty" class="btn btn-danger remove-sub-form-truck">X</button>
                 <button type="submit" id="save_dynamic-truck" class="btn btn-success">Save</button>
             </div>

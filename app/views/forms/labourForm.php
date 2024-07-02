@@ -1,5 +1,5 @@
 <hr class="hr"/>
-<div id="misc_container-labour" style="text-align: left">
+<div id="misc_container-labour">
     <h5 style="text-align: left">Labour</h5>
     <form id="ticket-form-dynamic-labour" method="post">
         <div id="sub-forms-container_main-labour"></div>

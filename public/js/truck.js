@@ -1,24 +1,4 @@
 $(document).ready(function () {
-
-//==========  Script for Truck Widget  ===========
-    $('#trucks-label').change(function () {
-        let truckLabel = $(this).val();
-        $.ajax({
-            url: "/dependent-dropdown/truck-dropdown?truckLabel=" + truckLabel,
-            type: 'post',
-            dataType: 'html',
-            data: {truckLabel: truckLabel},
-            success: function (data) {
-                var returnedData = JSON.parse(data);
-                // Use the code from above to update the HTML elements
-                $('#trucks-uom').val(returnedData.uom);
-                $('#trucks-rate').val(returnedData.rate);
-                $('#trucks-quantity').val(returnedData.quantity);
-                $('#trucks-total').val(returnedData.total);
-            }
-        });
-    });
-
 //==========  Function to calculate the total for each row
     function calculateRowTotal(row) {
         let quantity = parseFloat(row.find('.quantity-truck').val()) || 0;
@@ -53,8 +33,8 @@ $(document).ready(function () {
     calculateSubTotal();
     //==========END:: Script for Truck Widget  ===========
 
-    // Change block position
-    $('#ticket-form-dynamic-truck').insertBefore('#truck-widget'); // Moves the '#block-to-move' before '#target-element'
+    // // Change block position
+    // $('#ticket-form-dynamic-truck').insertBefore('#truck-widget'); // Moves the '#block-to-move' before '#target-element'
 
 //========== Ajax script for Dynamic adding Truck blocks  ===========
     let counter = 0;
@@ -78,24 +58,32 @@ $(document).ready(function () {
     $(document).on('click', '#save_dynamic-truck', function (e) {
         e.preventDefault();
         $.ajax({
-            url: '/createTruck',
+            url: '/createTruck?ticketId=' + ticketId,
             type: 'POST',
             dataType: "html",
             data: $('#ticket-form-dynamic-sub-truck').serialize(),
             success: function (data) {
+                console.log(data);
                 try {
                     // Try to parse the variable as JSON
                     let jsonObject = JSON.parse(data);
                     if (jsonObject.errors.quantity) {
                         $("#quantity-group").addClass("has-error");
-                        $("#quantity-group").append(
+                        $("#quantity-group").empty().append(
                             '<div class="help-block">' + jsonObject.errors.quantity + "</div>"
+                        );
+                    }
+                    if (jsonObject.errors.label) {
+                        $("#label-group").addClass("has-error");
+                        $("#label-group").empty().append(
+                            '<div class="help-block">' + jsonObject.errors.label + "</div>"
                         );
                     }
                 } catch (e) {
                     $('#sub-forms-container_main-truck').remove();
-                    $('#misc_container-truck-test').replaceWith(data);
+                    $('#misc_container-truck').replaceWith(data); // Replace the content
                     $('.add-sub-form-truck').prop('disabled', false);
+                    $(".modal_custom").fadeOut(5000);
                 }
             }
         });
@@ -110,7 +98,7 @@ $(document).ready(function () {
     $(document).on('click', '#save-dynamic-form-misc-truck', function (e) {
         e.preventDefault();
         $.ajax({
-            url: '/truck/update-truck?ticketId=' + ticketId,
+            url: '/updateTruck?ticketId=' + ticketId,
             type: 'POST',
             data: $('#ticket-form-dynamic-truck').serialize(),
             success: function (data) {

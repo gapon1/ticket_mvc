@@ -18,33 +18,48 @@ class Truck
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    public function save($data)
+    public function save($data, $ticketId)
     {
-        $query = "INSERT INTO $this->table (
+        try {
+            // Begin a transaction
+            $this->db->beginTransaction();
+
+            $query = "INSERT INTO $this->table (
                    label, 
                    quantity, 
                    uom, 
                    rate, 
                    total
                    ) VALUES (?,?,?,?,?)";
-        $stmt = $this->db->prepare($query);
-        if ($stmt->execute(array_values($data))) {
-            return true;
-        } else {
-            return false;
+            $stmt = $this->db->prepare($query);
+            $stmt->execute(array_values($data));
+            $truckId = $this->db->lastInsertId();
+
+            // Insert into ticketTruck table
+            $sql = "INSERT INTO ticket_trucks (ticket_id, truck_id) VALUES (:ticket_id, :truck_id)";
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute(['ticket_id' => $ticketId, 'truck_id' => $truckId]);
+
+            // Commit the transaction
+            $this->db->commit();
+
+            echo "<div class='alert alert-success modal_custom' role='alert'>Data saved successfully!</div>";
+        } catch (\Exception $e) {
+            // Rollback the transaction if something failed
+            $this->db->rollBack();
+            echo "<div class='alert alert-danger modal_custom' role='alert'>Failed to save data: </div>" . $e->getMessage();
+
         }
+        return true;
     }
 
     public function update($newData)
     {
         $sql = "UPDATE $this->table SET 
-                   staff_id = :staff_id, 
-                   position_id = :position_id, 
+                   label = :label, 
+                   quantity = :quantity, 
                    uom = :uom, 
-                   regular_rate = :regular_rate, 
-                   reg_hours = :reg_hours, 
-                   overtime_rate = :overtime_rate,
-                   overtime = :overtime,
+                   rate = :rate, 
                    total = :total
                WHERE id=:id";
         $stmt = $this->db->prepare($sql);

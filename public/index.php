@@ -70,4 +70,7 @@ switch ($action) {
     case 'deleteTicketTruck':
         $ticketTruck->deleteTicketTruck($id);
         break;
+    case 'updateTruck':
+        $truck->updateTruck($_POST['items_truck']);
+        break;
 }
