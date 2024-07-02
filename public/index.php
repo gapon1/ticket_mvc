@@ -29,7 +29,7 @@ switch ($action) {
         $controller->locationDropdown($_GET['job_id']);
         break;
     case 'miscellaneousAddBlock':
-        $miscellaneous->miscellaneousAddBlock($_GET['index'], $_GET['counter'], $_GET['ticketId'] );
+        $miscellaneous->miscellaneousAddBlock($_GET['index'], $_GET['counter'], $id);
         break;
     case 'createMiscellaneous':
         $miscellaneous->createMiscellaneous($_POST, $id);
