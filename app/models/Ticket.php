@@ -22,6 +22,7 @@ class Ticket
 
     public function updateTicket($newData)
     {
+        //TODO add dropdown validation
         $sql = "UPDATE tickets SET 
                      customer_id = :customer_id,
                      ordered_by = :ordered_by,

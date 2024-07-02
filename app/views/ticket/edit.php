@@ -19,6 +19,7 @@
     <script src="/js/ticket.js"></script>
     <script src="/js/miscellaneous.js"></script>
     <script src="/js/labour.js"></script>
+    <script src="/js/truck.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-sm bg-dark">
