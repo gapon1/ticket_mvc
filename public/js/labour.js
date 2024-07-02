@@ -111,7 +111,7 @@ $(document).ready(function () {
                     let jsonObject = JSON.parse(data);
                     if (jsonObject.errors.reg_hours) {
                         $("#reg_hours-group").addClass("has-error");
-                        $("#reg_hours-group").append(
+                        $("#reg_hours-group").empty().append(
                             '<div class="help-block">' + jsonObject.errors.reg_hours + "</div>"
                         );
                     }
@@ -119,6 +119,7 @@ $(document).ready(function () {
                     $('#sub-forms-container_main-labour').remove();
                     $('#misc_container-labour').replaceWith(data); // Replace the content
                     $('.add-sub-form-labour').prop('disabled', false);
+                    $(".modal_custom").fadeOut(5000);
                     updateSubTotal();
                 }
             }

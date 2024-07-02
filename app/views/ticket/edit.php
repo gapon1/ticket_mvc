@@ -6,7 +6,6 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>EDIT Ticket</title>
-
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
           integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
@@ -36,6 +35,7 @@
     <?php include __DIR__ . "/../../views/forms/truckForm.php"; ?>
 
     <?php include __DIR__ . "/../../views/forms/miscellaneousForm.php"; ?>
+    <div id="main-save-button"></div>
 
 </div>
 

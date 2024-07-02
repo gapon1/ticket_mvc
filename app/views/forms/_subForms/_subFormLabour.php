@@ -30,9 +30,10 @@
                 <label>Reg Rate</label>
                 <input type="number" name="regular_rate" class="reg-rate-labour form-control no_active" value="22">
             </div>
-            <div id="reg_hours-group" class="form-group col-md-1">
+            <div class="form-group col-md-1">
                 <label>Reg Hours</label>
                 <input type="number" name="reg_hours" class="reg-hours-labour form-control">
+                <div id="reg_hours-group"></div>
             </div>
             <div class="form-group col-md-2">
                 <label>Overtime Rate</label>

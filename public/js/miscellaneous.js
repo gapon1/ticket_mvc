@@ -67,25 +67,25 @@ $(document).ready(function () {
                     let jsonObject = JSON.parse(data);
                     if (jsonObject.errors.description) {
                         $("#description-group").addClass("has-error");
-                        $("#description-group").append(
+                        $("#description-group").empty().append(
                             '<div class="help-block">' + jsonObject.errors.description + "</div>"
                         );
                     }
                     if (jsonObject.errors.cost) {
                         $("#cost-group").addClass("has-error");
-                        $("#cost-group").append(
+                        $("#cost-group").empty().append(
                             '<div class="help-block">' + jsonObject.errors.cost + "</div>"
                         );
                     }
                     if (jsonObject.errors.price) {
                         $("#price-group").addClass("has-error");
-                        $("#price-group").append(
+                        $("#price-group").empty().append(
                             '<div class="help-block">' + jsonObject.errors.price + "</div>"
                         );
                     }
                     if (jsonObject.errors.quantity) {
-                        $("#quantity-group").addClass("has-error");
-                        $("#quantity-group").append(
+                        $("#quantity-group-misc").addClass("has-error");
+                        $("#quantity-group-misc").empty().append(
                             '<div class="help-block">' + jsonObject.errors.quantity + "</div>"
                         );
                     }
@@ -93,6 +93,7 @@ $(document).ready(function () {
                     $('#sub-forms-container_main').remove();
                     $('#misc_container').replaceWith(data); // Replace the content
                     $('.add-sub-form').prop('disabled', false);
+                    $(".modal_custom").fadeOut(5000);
                     updateSubTotal();
                 }
             }

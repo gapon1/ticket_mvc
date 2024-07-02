@@ -2,21 +2,25 @@
     <div class="sub-form">
         <div class="form-row">
             <input name="ticket_id" id="misc_ticket_id" type="hidden" value="<?= $id ?>">
-            <div id="description-group" class="form-group col-md-2">
+            <div class="form-group col-md-2">
                 <label>Description</label>
                 <input name="description" class="form-control" required>
+                <div id="description-group"></div>
             </div>
-            <div id="cost-group" class="form-group col-md-2">
+            <div class="form-group col-md-2">
                 <label>Cost</label>
                 <input name="cost" type="number" class="form-control" required>
+                <div id="cost-group"></div>
             </div>
-            <div id="price-group" class="form-group col-md-2">
+            <div class="form-group col-md-2">
                 <label>Price</label>
                 <input name="price" type="number" class="miscellaneous-price form-control" required>
+                <div id="price-group"></div>
             </div>
-            <div id="quantity-group" class="form-group col-md-2">
+            <div class="form-group col-md-2">
                 <label>Quantity</label>
                 <input name="quantity" type="number" class="miscellaneous-quantity form-control" required>
+                <div id="quantity-group-misc"></div>
             </div>
             <div class="form-group col-md-2">
                 <label>Total</label>

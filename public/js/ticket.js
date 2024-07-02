@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    $("#save-dynamic-form").appendTo("#main-save-button");
+
 //========== Ajax script for Ticket Form  ===========
     // Customer change
     $('#customer-dropdown').change(function () {

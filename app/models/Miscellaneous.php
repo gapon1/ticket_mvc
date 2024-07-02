@@ -23,8 +23,10 @@ class Miscellaneous
         $query = "INSERT INTO $this->table (ticket_id, description, cost, price, quantity, total) VALUES (?,?,?,?,?,?)";
         $stmt = $this->db->prepare($query);
         if ($stmt->execute(array_values($data))) {
+            echo "<div class='alert alert-success modal_custom' role='alert'>Data saved successfully!</div>";
             return true;
         } else {
+            echo "<div class='alert alert-danger modal_custom' role='alert'>Failed to save data: </div>" . $e->getMessage();
             return false;
         }
     }
