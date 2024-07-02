@@ -33,14 +33,13 @@ class TicketController
         $ticket = $this->ticketModel->getTicket($id);
         $customers = $this->customerModel->getAllCustomers();
         $jobs = $this->jobsModel->getAllJobs();
-        $statuses = self::getStatusOptions();
-        $uoms = self::getUomOptions();
+        $statuses = $this->formModel->getStatusOptions();
+        $uoms = $this->formModel->getUomOptions();
         $locations = $this->locationsModel->getAllLocations();
 
         // Services Forms block
         $labours = $this->formModel->getAllLabours();
         $staffs = $this->formModel->getAllStaff();
-        $positions = $this->formModel->getAllPositions();
         $positions = $this->formModel->getAllPositions();
         $ticketTrucks = $this->formModel->getAllTicketTruck($id);
         $trucks = $this->formModel->getAllTruck();
@@ -73,23 +72,6 @@ class TicketController
         if (!empty($location)) {
             echo json_encode($location);
         }
-    }
-
-    public static function getStatusOptions()
-    {
-        return [
-            'Active' => 'Active',
-            'Pending' => 'Pending',
-            'Closed' => 'Closed',
-        ];
-    }
-
-    public static function getUomOptions()
-    {
-        return [
-            'Hourly' => 'Hourly',
-            'Fixed' => 'Fixed',
-        ];
     }
 }
 

@@ -20,7 +20,7 @@
             </div>
             <div class="form-group col-md-2">
                 <label>Total</label>
-                <input class="miscellaneous-total form-control" disabled>
+                <input class="miscellaneous-total form-control no_active">
                 <input name="total" type="hidden" class="miscellaneous-total">
             </div>
             <div class="form-group col-md-2 text-center" style="margin-top: 45px">

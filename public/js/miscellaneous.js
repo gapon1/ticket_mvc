@@ -108,7 +108,7 @@ $(document).ready(function () {
     $("#save-dynamic-form-misc").on('click', function (e) {
         e.preventDefault();
         $.ajax({
-            url: '/updateMiscellaneous?ticketId=' + ticketId,
+            url: '/updateMiscellaneous',
             type: 'POST',
             dataType: "html",
             data: $("#ticket-form-dynamic").serialize(),

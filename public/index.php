@@ -4,12 +4,14 @@ require __DIR__ . '/../vendor/autoload.php';
 
 use App\Controllers\TicketController;
 use App\Controllers\MiscellaneousController;
+use App\Controllers\LabourController;
 
 $action = isset($_GET['url']) ? $_GET['url'] : 'edit';
 $id = isset($_GET['id']) ? $_GET['id'] : 1; // Default to 1 for testing
 
 $controller = new TicketController();
 $miscellaneous = new MiscellaneousController();
+$labour = new LabourController();
 
 
 switch ($action) {
@@ -39,5 +41,17 @@ switch ($action) {
         break;
     case 'updateMiscellaneous':
         $miscellaneous->updateMiscellaneous($_POST['items']);
+        break;
+    case 'labourAddBlock':
+        $labour->labourAddBlock($_GET['index'], $_GET['counter'], $id);
+        break;
+    case 'createLabour':
+        $labour->createLabour($_POST, $id);
+        break;
+    case 'deleteLabour':
+        $labour->deleteLabour($id);
+        break;
+    case 'updateLabour':
+        $labour->updateLabour($_POST['items_labour']);
         break;
 }

@@ -65,4 +65,21 @@ class FormModel
         return $stmt->fetchAll(\PDO::FETCH_CLASS);
     }
 
+    public static function getStatusOptions()
+    {
+        return [
+            'Active' => 'Active',
+            'Pending' => 'Pending',
+            'Closed' => 'Closed',
+        ];
+    }
+
+    public static function getUomOptions()
+    {
+        return [
+            'Hourly' => 'Hourly',
+            'Fixed' => 'Fixed',
+        ];
+    }
+
 }
