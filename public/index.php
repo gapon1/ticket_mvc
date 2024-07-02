@@ -38,6 +38,6 @@ switch ($action) {
         $miscellaneous->deleteMiscellaneous($_GET['id']);
         break;
     case 'updateMiscellaneous':
-        $miscellaneous->updateMiscellaneous($_POST, $_GET['ticketId']);
+        $miscellaneous->updateMiscellaneous($_POST['items']);
         break;
 }

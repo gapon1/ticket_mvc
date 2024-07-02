@@ -12,6 +12,12 @@ class Miscellaneous
         $this->db = $db;
     }
 
+    public function getAllMiscellaneous()
+    {
+        $stmt = $this->db->query("SELECT * FROM $this->table");
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
     public function save($data)
     {
         $query = "INSERT INTO $this->table (ticket_id, description, cost, price, quantity, total) VALUES (?,?,?,?,?,?)";
@@ -23,14 +29,13 @@ class Miscellaneous
         }
     }
 
-    public function update($ticketId, $newData)
+    public function update($newData)
     {
         $sql = "UPDATE $this->table SET 
                      description = :description,
                      cost = :cost,
                      price = :price,
                      quantity = :quantity,
-                     ticket_id = :ticket_id,
                      total = :total
                WHERE id=:id";
         $stmt = $this->db->prepare($sql);
@@ -45,7 +50,7 @@ class Miscellaneous
 
     public function delete($id)
     {
-        if ($id != 'empty'){
+        if ($id != 'empty') {
             $query = "DELETE FROM $this->table WHERE `id` = $id";
             $stmt = $this->db->prepare($query);
             $stmt->execute();

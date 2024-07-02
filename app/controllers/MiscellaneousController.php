@@ -24,7 +24,44 @@ class MiscellaneousController
         include __DIR__ . '/../views/forms/_subForms/_subFormMiscellaneous.php';
     }
 
-    public function createMiscellaneousValidator($post)
+    public function createMiscellaneous($post, $id)
+    {
+        $validator = $this->miscellaneousValidator($post);
+
+        if ($validator['success']) {
+            if ($this->miscellaneousModel->save($post)) {
+                $miscellaneous = $this->formModel->getAllMiscellaneous();
+                return include __DIR__ . "/../views/forms/miscellaneousForm.php";
+            } else {
+                return 'Create ERROR';
+            }
+        } else {
+            echo json_encode($validator);
+        }
+
+    }
+
+    public function updateMiscellaneous($post)
+    {
+        foreach ($post as $misc) {
+            $validator = $this->miscellaneousValidator($misc);
+            if ($validator['success']) {
+                $this->miscellaneousModel->update($misc);
+            }
+        }
+
+        return 'Miscellaneous Updated Success!';
+    }
+
+    public function deleteMiscellaneous($id)
+    {
+        $this->miscellaneousModel->delete($id);
+        return '<div class="form-group col-md-12 text-right" style="margin-top: 30px">
+            <button type="button" class="btn btn-primary add-sub-form">+</button>
+        </div>';
+    }
+
+    public function miscellaneousValidator($post)
     {
         if (empty($post['description'])) {
             $errors['description'] = 'Description is required.';
@@ -46,42 +83,6 @@ class MiscellaneousController
             $data['message'] = 'Success!';
         }
         return $data;
-    }
-
-    public function createMiscellaneous($post, $id)
-    {
-        $validator = $this->createMiscellaneousValidator($post);
-
-        if ($validator['success']) {
-            if ($this->miscellaneousModel->save($post)) {
-                $miscellaneous = $this->formModel->getAllMiscellaneous();
-                return include __DIR__ . "/../views/forms/miscellaneousForm.php";
-            } else {
-                return 'Create ERROR';
-            }
-        } else {
-            echo json_encode($validator);
-        }
-
-    }
-
-    public function updateMiscellaneous($post, $ticketId)
-    {
-        $validator = $this->createMiscellaneousValidator($post);
-
-        if ($validator['success']) {
-            $this->miscellaneousModel->update($ticketId, $post);
-        }
-
-        return 'Miscellaneous Updated Success!';
-    }
-
-    public function deleteMiscellaneous($id)
-    {
-        $this->miscellaneousModel->delete($id);
-        return '<div class="form-group col-md-12 text-right" style="margin-top: 30px">
-            <button type="button" class="btn btn-primary add-sub-form">+</button>
-        </div>';
     }
 
 }
