@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $("#save-dynamic-form").appendTo("#main-save-button");
+    // $("#save-dynamic-form").appendTo("#main-save-button");
 
 //========== Ajax script for Ticket Form  ===========
     // Customer change
@@ -47,7 +47,7 @@ $(document).ready(function () {
             dataType: "html",
             data: $(this).serialize(),
             success: function (data) {
-                console.log(data);
+                $('#successModal').modal('show');
             }
         });
     })

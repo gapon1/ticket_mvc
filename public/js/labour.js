@@ -135,8 +135,7 @@ $(document).ready(function () {
             dataType: "html",
             data: $('#ticket-form-dynamic-labour').serialize(),
             success: function (data) {
-                // $('#exampleModal .modal-body').html(data);
-                // $('#exampleModal').modal('show');
+                // Success message
             }
         });
     });

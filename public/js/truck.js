@@ -98,12 +98,11 @@ $(document).ready(function () {
     $(document).on('click', '#save-dynamic-form-misc-truck', function (e) {
         e.preventDefault();
         $.ajax({
-            url: '/updateTruck?ticketId=' + ticketId,
+            url: '/updateTruck',
             type: 'POST',
             data: $('#ticket-form-dynamic-truck').serialize(),
             success: function (data) {
-                // $('#exampleModal .modal-body').html(data);
-                // $('#exampleModal').modal('show');
+                // Success message
             }
         });
     })
