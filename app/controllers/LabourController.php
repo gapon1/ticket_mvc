@@ -83,4 +83,12 @@ class LabourController
         return $data;
     }
 
+    public function selectPositionInfo($position_id)
+    {
+        $position = $this->labourModel->getAllLabourByPositionId($position_id);
+        if (!empty($position)) {
+            echo json_encode($position);
+        }
+    }
+
 }

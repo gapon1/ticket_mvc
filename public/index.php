@@ -73,4 +73,7 @@ switch ($action) {
     case 'updateTruck':
         $truck->updateTruck($_POST['items_truck']);
         break;
+    case 'selectPositionInfo':
+        $labour->selectPositionInfo($_GET['position_id']);
+        break;
 }

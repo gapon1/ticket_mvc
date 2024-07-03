@@ -18,6 +18,12 @@ class Labour
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    public function getAllLabourByPositionId($id)
+    {
+        $stmt = $this->db->query("SELECT * FROM $this->table WHERE position_id = $id");
+        return $stmt->fetchAll(\PDO::FETCH_CLASS);
+    }
+
     public function save($data)
     {
         $query = "INSERT INTO $this->table (

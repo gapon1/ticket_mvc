@@ -34,11 +34,11 @@ class Ticket
                      description = :description 
                WHERE id=:id";
         $stmt = $this->db->prepare($sql);
-
-        if ($stmt->execute($newData)) {
-            echo "Record updated successfully";
-        } else {
-            echo "Error updating record";
+        try {
+            $stmt->execute($newData);
+        }
+        catch(\Exception $e) {
+            echo 'Message: ' .$e->getMessage();
         }
     }
 }

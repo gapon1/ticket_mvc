@@ -1,6 +1,4 @@
 $(document).ready(function () {
-    // $("#save-dynamic-form").appendTo("#main-save-button");
-
 //========== Ajax script for Ticket Form  ===========
     // Customer change
     $('#customer-dropdown').change(function () {
@@ -41,15 +39,38 @@ $(document).ready(function () {
     //Update general form
     $('#general_form').on('submit', function (e) {
         e.preventDefault();
+        validateSelect();
         $.ajax({
             url: '/update',
             type: 'POST',
             dataType: "html",
             data: $(this).serialize(),
             success: function (data) {
-                $('#successModal').modal('show');
             }
         });
     })
+
+    function validateSelect() {
+        var isValid = true;
+
+        if ($('#job-dropdown').val() === 'Select Job') {
+            $('#job-dropdown').addClass('is-invalid');
+            isValid = false;
+        } else {
+            $('#job-dropdown').removeClass('is-invalid');
+        }
+
+        if ($('#location-dropdown').val() === 'Select Location/LSD') {
+            $('#location-dropdown').addClass('is-invalid');
+            isValid = false;
+        } else {
+            $('#location-dropdown').removeClass('is-invalid');
+        }
+
+        if (isValid) {
+            $('#successModal').modal('show');
+        }
+    }
+
 
 });

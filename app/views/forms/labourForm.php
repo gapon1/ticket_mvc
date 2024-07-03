@@ -6,7 +6,7 @@
         <?php if (!empty($labours)): ?>
             <?php foreach ($labours as $index => $mod): ?>
                 <input name="items_labour[<?= $index; ?>][id]" type="hidden" value="<?= $mod->id ?>">
-                <div class="form-row sub-form-labour">
+                <div class="form-row sub-form-labour" id="labour_block">
                     <div class="form-group col-md-2">
                         <label>Staff</label>
                         <select name="items_labour[<?= $index; ?>][staff_id]" class="form-control">
@@ -19,7 +19,7 @@
                     </div>
                     <div class="form-group col-md-2">
                         <label>Position</label>
-                        <select name="items_labour[<?= $index; ?>][position_id]" class="form-control">
+                        <select  name="items_labour[<?= $index; ?>][position_id]" class="form-control position_id">
                             <?php foreach ($positions as $position): ?>
                                 <option <?php if ($position->id == $mod->position_id) {
                                     echo 'selected';
@@ -29,7 +29,7 @@
                     </div>
                     <div class="form-group col-md-1">
                         <label>Uom</label>
-                        <select name="items_labour[<?= $index; ?>][uom]" class="form-control">
+                        <select name="items_labour[<?= $index; ?>][uom]" class="form-control labour_uom">
                             <?php foreach ($uoms as $uom): ?>
                                 <option <?php if ($mod->uom == $uom) {
                                     echo 'selected';
@@ -65,6 +65,7 @@
                         <button type="button" class="btn btn-primary add-sub-form-labour">+</button>
                     </div>
                 </div>
+
             <?php endforeach; ?>
             <div class="container">
                 <div class="form-group row">

@@ -22,7 +22,7 @@
 
             <div class="col">
                 <label class="d-inline-block" for="job_id">Job ID</label>
-                <select id="job-dropdown" name="job_id" class="form-control no_active">
+                <select  id="job-dropdown" name="job_id" class="form-control no_active">
                     <?php foreach ($jobs as $job): ?>
                         <option <?php if ($ticket['job_id'] == $job->id) {
                             echo 'selected';
