@@ -6,16 +6,16 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>EDIT Ticket</title>
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/public/css/main.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
           integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="/js/tinymce/tinymce.min.js"></script>
-    <script src="/js/ticket.js"></script>
-    <script src="/js/miscellaneous.js"></script>
-    <script src="/js/labour.js"></script>
-    <script src="/js/truck.js"></script>
+    <script src="/public/js/tinymce/tinymce.min.js"></script>
+    <script src="/public/js/ticket.js"></script>
+    <script src="/public/js/miscellaneous.js"></script>
+    <script src="/public/js/labour.js"></script>
+    <script src="/public/js/truck.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-sm bg-dark">
