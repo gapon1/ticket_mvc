@@ -100,6 +100,8 @@ $(document).ready(function () {
     // Create new entity
     $(document).on('click', '#save_dynamic-labour', function (e) {
         e.preventDefault();
+        $(".form-group").removeClass("has-error");
+        $(".help-block").remove();
         $.ajax({
             url: '/createLabour?ticketId=' + ticketId,
             type: 'POST',

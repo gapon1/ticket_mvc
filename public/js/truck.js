@@ -57,6 +57,8 @@ $(document).ready(function () {
     // Create new entity
     $(document).on('click', '#save_dynamic-truck', function (e) {
         e.preventDefault();
+        $(".form-group").removeClass("has-error");
+        $(".help-block").remove();
         $.ajax({
             url: '/createTruck?ticketId=' + ticketId,
             type: 'POST',
