@@ -168,29 +168,31 @@ $(document).ready(function () {
     });
 //==========END:: Work with Labour Widget  ===========
 
-    //Update general form
-    $('.position_id').change(function () {
+    $(document).on('change', '.position_id', function () {
         let positionId = $(this).val();
+        let closestForm = $(this).closest('.sub-form-labour');
         $.ajax({
             url: '/selectPositionInfo?position_id=' + positionId,
             type: 'POST',
             dataType: "json",
-            data: $(this).serialize(),
             success: function (data) {
-                $.each(data, function (index, value) {
-                    $(document).on('change', '.sub-form-labour .position_id', function () {
-                        let closestForm = $(this).closest('.sub-form-labour');
+                if (data.length > 0) {
+                    let value = data[0]; // Assuming the response is an array and we need the first element
+                    if (closestForm.length) {
+                        // Update fields in the sub-form-labour closest to the changed position_id
                         closestForm.find('.reg-hours-labour').val(value.reg_hours);
                         closestForm.find('.labour_uom').val(value.uom);
                         closestForm.find('.reg-rate-labour').val(value.regular_rate);
                         closestForm.find('.overtime-rate-labour').val(value.overtime_rate);
                         closestForm.find('.overtime-labour').val(value.overtime);
-                        let row = $(this).closest('.sub-form-labour');
-                        calculateRowLabour(row);
+
+                        // Calculate row labour and total sub-total
+                        calculateRowLabour(closestForm);
                         calculateTotalSubTotal();
-                    });
-                });
+                    }
+                }
             }
         });
     });
+
 });
